@@ -1,28 +1,46 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import { User, FolderKanban, Mail } from 'lucide-react';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Simple top nav */}
+      <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+          <a href="#home" className="inline-flex items-center gap-2 font-semibold">
+            <User className="h-5 w-5" /> Sai — Portfolio as a Service
+          </a>
+          <nav className="hidden items-center gap-1 sm:flex">
+            <a href="#about" className="rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground">About</a>
+            <a href="#projects" className="rounded-md px-3 py-2 text-sm hover:bg-accent hover:text-accent-foreground">Projects</a>
+            <a href="#contact" className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:opacity-90">
+              <Mail className="h-4 w-4" /> Contact
+            </a>
+          </nav>
         </div>
-      </div>
+      </header>
+
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+      </main>
+
+      <footer className="border-t">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-sm text-muted-foreground">
+          <p>© {new Date().getFullYear()} Sai. Built for clarity and fast evaluation.</p>
+          <p className="inline-flex items-center gap-1">
+            <FolderKanban className="h-4 w-4" /> Explore projects above
+          </p>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
